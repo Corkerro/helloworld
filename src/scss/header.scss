@@ -1,0 +1,245 @@
+//====================================================================================================
+.header {
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    &__bg {
+        position: fixed;
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        top: calc(160px - 260px);
+        pointer-events: none;
+        z-index: 1;
+    }
+    &__logo {
+        position: absolute;
+        bottom: -50vh;
+        scale: 1;
+        left: 50%;
+        width: 100%;
+        max-width: 770px;
+        width: 100%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 15px;
+        @include adaptiveValue('margin-bottom', 0, 70, 3, 800, 320);
+        & img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: em(1020)) {
+            justify-content: end;
+        }
+    }
+
+    &__phone {
+        font-weight: 400;
+        font-size: toRem(16);
+        text-transform: uppercase;
+        color: var(--accent);
+        opacity: 0.5;
+        transition:
+            opacity 0.3s ease,
+            color 0.3s ease;
+        &:hover {
+            opacity: 1;
+        }
+        position: relative;
+        z-index: 10;
+        &._dynamic_adapt_ {
+            position: absolute;
+            bottom: calc(20vh + 100px);
+            color: var(--white);
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+    }
+
+    &__right {
+        display: flex;
+        @include adaptiveValue('gap', 64, 20);
+        align-items: center;
+        & > .button {
+            position: relative;
+            z-index: 10;
+            @media (max-width: em(525)) {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+
+    &__menu {
+    }
+}
+.phone {
+}
+.button {
+}
+
+.menu-open {
+    & .menu__body {
+        right: 0;
+    }
+    @media (max-width: $mobile) {
+        & .header__phone {
+            color: var(--white);
+            transition: color 0.1s ease 0.2s;
+        }
+    }
+}
+
+.menu {
+    &__icon {
+    }
+
+    &__body {
+        position: fixed;
+        width: 520px;
+        backdrop-filter: blur(20px);
+        background: rgba(25, 65, 81, 0.9);
+        height: 120vh;
+        top: 0;
+        // right: 0;
+        transition: right 0.5s ease;
+        right: -540px;
+        @media (max-width: $mobile) {
+            width: 100%;
+            right: -100%;
+        }
+        & .button {
+            position: absolute;
+            bottom: calc(20vh + 20px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__list {
+        margin: 190px auto 0;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        width: 240px;
+        font-weight: 400;
+        font-size: 36px;
+        color: var(--white);
+        @media (max-width: $mobile) {
+            text-align: center;
+        }
+    }
+
+    &__item {
+        transition: color 0.3s ease;
+        &:hover {
+            color: var(--accent);
+        }
+    }
+
+    &__link {
+    }
+}
+.menu-spollers {
+    &__item {
+    }
+
+    &__title {
+        list-style: none;
+        transition: color 0.3s ease;
+        &:hover,
+        &._spoller-active {
+            color: var(--accent);
+        }
+        cursor: pointer;
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        margin-top: toRem(12);
+        & li a {
+            font-weight: 400;
+            font-size: 16px;
+            color: var(--white);
+            transition: color 0.3s ease;
+            &:hover {
+                color: var(--accent);
+            }
+        }
+    }
+}
+.hero__logo,
+.hero__content .button,
+.hero__content h4 {
+    will-change: transform, opacity;
+}
+
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+    display: block;
+    position: relative;
+    width: toRem(30);
+    height: toRem(18);
+    z-index: 5;
+    @media (any-hover: none) {
+        cursor: default;
+    }
+    span,
+    &::before,
+    &::after {
+        content: '';
+        transition: all 0.3s ease 0s;
+        right: 0;
+        position: absolute;
+        width: 100%;
+        height: toRem(2);
+        background-color: var(--accent);
+    }
+    &::before {
+        top: 0;
+    }
+    &::after {
+        bottom: 0;
+    }
+    span {
+        top: calc(50% - toRem(1));
+    }
+    .menu-open & {
+        span {
+            width: 0;
+        }
+        &::before,
+        &::after {
+        }
+        &::before {
+            top: calc(50% - toRem(1));
+            transform: rotate(-45deg);
+        }
+        &::after {
+            bottom: calc(50% - toRem(1));
+            transform: rotate(45deg);
+        }
+    }
+}
+
+//
+//
+//

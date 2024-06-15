@@ -1,0 +1,45 @@
+// Заголовки, загальні БЕМ блоки та інше...
+.button {
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+    &._stroke {
+        color: var(--accent);
+        background-color: transparent;
+        position: relative;
+        overflow: hidden;
+        & span.hover {
+            position: absolute; /* Replace @include absolute() */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            display: block;
+            width: 0; /* Replace @include size(0) */
+            height: 0; /* Replace @include size(0) */
+            border-radius: 50%;
+            background-color: var(--accent);
+            transition:
+                width 0.4s ease-in-out,
+                height 0.4s ease-in-out;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+        }
+        &:hover {
+            color: var(--main-bg);
+            // background-color: var(--accent);
+            & span.hover {
+                width: 270%; /* Calculate the actual width */
+                height: 270%; /* Calculate the actual height */
+            }
+        }
+    }
+}

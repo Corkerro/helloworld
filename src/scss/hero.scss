@@ -1,0 +1,38 @@
+.hero {
+    top: 0;
+    width: 100%;
+    &__container {
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 32px;
+        & h4 {
+            font-weight: 400;
+            @include adaptiveValue('font-size', 24, 20);
+            color: var(--white);
+            will-change: transform;
+        }
+    }
+
+    &__logo {
+        opacity: 0;
+        pointer-events: none;
+        width: 100%;
+        max-width: 770px;
+        & img {
+            width: 100%;
+        }
+    }
+}
+.button {
+    will-change: transform;
+}
+
+.test {
+    height: 1000vh;
+}
